@@ -1,17 +1,27 @@
 /* General styles */
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: var(--primary-background-color);
+    scroll-behavior: smooth;
+    font-family: "Roboto", sans-serif;
+    
   }
   
   body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(1rem, 2vw, 1.125rem);
     line-height: 1.5;
   
-    --primary-text-color: #181820;
-    --secondary-text-color: #5c5c62;
+    --primary-text-color: #000;
+    --secondary-text-color: #fff;
+    --primary-background-color: #BEE9E8;
+    --secondary-background-color: #1B4965;
+    --odd-tag-background-color: #62B6CB;
+    --even-tag-background-color: #5FA8D3;
     --durability-text-color: #6a737d9c;
     --icon-color: #6a737d;
     --border-color: #ff9a0045;
@@ -19,9 +29,10 @@
   }
   
   .container {
+    max-width: 1200px;
+    height: auto;
     margin: 0 auto;
-    padding: 0 30px;
-    max-width: 900px;
+    padding: 0 1.25rem;
   }
   
   .fh {
@@ -35,20 +46,55 @@
     flex-direction: column;
     justify-content: space-between;
   }
+
+  .section {
+    margin: 0 auto;
+    padding: 5rem 0 2rem;
+ }
+
+ .paragraph {
+    font-family: inherit;
+    text-wrap: balance;
+    color: inherit;
+ }
+
+ .heading {
+    font-family: inherit;
+      font-size: clamp(2.179rem, 5vw, 3.176rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -1px;
+ }
+
+ .banner-column {
+    position: relative;
+    display: grid;
+    align-items: center;
+    row-gap: 2rem;
+  }
+ 
+  .banner-image {
+    display: block;
+    max-width: 25rem;
+    height: auto;
+    -o-object-fit: cover;
+       object-fit: cover;
+    justify-self: center;
+  }
+  
+  .banner-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 1.5rem;
+  } 
   
   .resume {
     margin: 50px auto;
-    border: 1px solid #f5f5f5;
-    box-shadow: 1px 1px 7px 7px #f5f5f5;
     padding: 30px 0;
     max-width: 900px;
   }
   
-  .resume__block {
-    border-bottom: 3px solid var(--border-color);
-    padding-bottom: 30px;
-    margin-bottom: 15px;
-  }
   
   @media screen and (max-width: 576px) {
     .main-info,
@@ -69,7 +115,7 @@
     }
   }
 
-  /*Contact info styles */
+  /* Contact info styles */
 
   .contact-info__header,
 .contact-info__sub-header {
@@ -79,12 +125,10 @@
 .contact-info__header {
   color: var(--primary-text-color);
   margin-bottom: 15px;
-  text-decoration-color: var(--text-decoration-color);
-  text-decoration-line: underline;
 }
 
 .contact-info__sub-header {
-  color: var(--secondary-text-color);
+  color: var(--primary-text-color);
   margin-bottom: 30px;
 }
 
@@ -99,7 +143,7 @@
 }
 
 .contact-info__item {
-  color: var(--secondary-text-color);
+  color: var(--primary-text-color);
   text-decoration: none;
   display: flex;
   justify-content: start;
@@ -127,14 +171,14 @@
 
 .contact-info__avatar {
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  height: 300px;
   object-fit: cover;
-  border: 3px solid;
-  border-color: var(--text-decoration-color);
+  border: 1px solid;
+  border-color: var(--secondary-background-color);
 }
 
-/*Intro and skills styles */
+/* Intro and skills styles */
 
 .intro {
     display: flex;
@@ -158,22 +202,43 @@
   }
   
   .intro_text {
-    color: var(--secondary-text-color);
+    color: var(--primary-text-color);
     text-align: justify;
-  }
+  } 
   
   .skills__header {
-    color: var(--secondary-text-color);
+    color: var(--primary-text-color);
     text-align: center;
     margin-bottom: 15px;
+    margin-top: 15px;
+  }
+
+  .skills__container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .skills__text {
     color: var(--secondary-text-color);
-    text-align: justify;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin: 10px auto;
+    padding: 5px 10px;
+    margin-bottom: 40px;
+  } 
+
+  .skills__text:nth-child(odd){
+    background-color: var(--secondary-background-color);
   }
 
-  /*Experience and additional info styles */
+  .skills__text:nth-child(even){
+    background-color: var(--even-tag-background-color);
+  }
+
+  /* Experience and additional info styles */
+  
 
   .experiences {
     flex: 1 1 60%;
@@ -181,13 +246,13 @@
   }
   
   .experiences__header {
-    color: var(--secondary-text-color);
+    color: var(--primary-text-color);
     text-align: left;
     margin-bottom: 20px;
   }
   
   .experiences__company-header-durability {
-    color: var(--durability-text-color);
+    color: var(--secondary-background-color);
     text-align: left;
     margin-bottom: 10px;
     font-size: 15px;
@@ -195,8 +260,6 @@
   
   .experiences__company-header-name {
     color: var(--primary-text-color);
-    text-decoration-color: var(--text-decoration-color);
-    text-decoration-line: underline;
     text-align: left;
     margin-bottom: 20px;
   }
@@ -207,7 +270,7 @@
   }
   
   .experiences__company-project-role {
-    color: var(--durability-text-color);
+    color: var(--secondary-background-color);
     text-align: left;
     margin-bottom: 10px;
     font-size: 15px;
@@ -220,7 +283,7 @@
   }
   
   .experiences__company-project-responsibilities {
-    color: var(--secondary-text-color);
+    color: var(--primary-text-color);
     padding-left: 20px;
   }
   
@@ -233,13 +296,13 @@
   }
   
   .additional-info__education-header {
-    color: var(--secondary-text-color);
+    color: var(--primary-text-color);
     text-align: left;
     margin-bottom: 20px;
   }
   
   .additional-info__education-university-durability {
-    color: var(--durability-text-color);
+    color: var(--secondary-background-color);
     text-align: left;
     margin-bottom: 10px;
     font-size: 15px;
@@ -252,7 +315,7 @@
   }
   
   .additional-info__education-university-name {
-    color: var(--secondary-text-color);
+    color: var(--primary-text-color);
   }
   
   .additional-info__languages {
@@ -260,11 +323,76 @@
   }
   
   .additional-info__languages-header {
-    color: var(--secondary-text-color);
+    color: var(--primary-text-color);
     text-align: left;
     margin-bottom: 20px;
   }
   
   .additional-info__languages-item {
+    color: var(--primary-text-color);
+  }
+
+
+/* Card things */
+
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+    transition: all 300ms ease;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+  }
+  .card__container {
+    max-width: 1200px;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 32px 32px;
+  }
+  .card__cover {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+  }
+  .card__tag {
+    background: var(--secondary-background-color);
+    display: inline-block;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
     color: var(--secondary-text-color);
   }
+  .card__body {
+    padding: 20px;
+  }
+  .card__title {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .card__desc {
+    margin-bottom: 20px;
+    font-size: 15px;
+    color: #858484;
+    line-height: 1.6;
+  }
+  .card__cover--one {
+    background-image: url(assets/desolution.jpg);
+  }
+  .card__cover--two {
+    background-image: url(assets/Isamaru.png);
+  }
+  .card__cover--three {
+    background-image: url(assets/paw.png);
+  }
+  
